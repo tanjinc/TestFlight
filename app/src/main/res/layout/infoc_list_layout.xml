@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#d70792c4">
+
+        <TextView
+                android:id="@+id/tableInputTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="表名："
+                android:textColor="#FFF"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+        <AutoCompleteTextView
+                android:id="@+id/autoCompleteTv"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:hint="tablename"
+                android:textColor="#FFF"
+                android:dropDownWidth="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/tableInputTv"
+                app:layout_constraintBottom_toBottomOf="@+id/tableInputTv"
+                app:layout_constraintStart_toEndOf="@+id/tableInputTv"/>
+
+
+        <TextView
+                android:id="@+id/indexTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="index："
+                android:textColor="#FFF"
+                app:layout_constraintStart_toEndOf="@+id/keyAutoCompleteTv"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="@+id/keyTv"
+                app:layout_constraintBottom_toBottomOf="@+id/keyTv"/>
+
+        <AutoCompleteTextView
+                android:id="@+id/indexAutoCompleteTv"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:hint="index"
+                android:textColor="#FFF"
+                app:layout_constraintTop_toTopOf="@+id/indexTv"
+                app:layout_constraintBottom_toBottomOf="@id/indexTv"
+                app:layout_constraintStart_toEndOf="@+id/indexTv"/>
+
+        <TextView
+                android:id="@+id/keyTv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="关键词："
+                android:textColor="#FFF"
+                app:layout_constraintStart_toStartOf="@+id/tableInputTv"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/tableInputTv"/>
+
+        <AutoCompleteTextView
+                android:id="@+id/keyAutoCompleteTv"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:hint="关键词"
+                android:textColor="#FFF"
+                app:layout_constraintTop_toTopOf="@+id/keyTv"
+                app:layout_constraintBottom_toBottomOf="@id/keyTv"
+                app:layout_constraintStart_toEndOf="@+id/keyTv"/>
+
+        <Button
+                android:id="@+id/searchBtn"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:text="查询"
+                android:background="@drawable/bg_btn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:textSize="12sp"
+                android:layout_marginEnd="16dp"
+                android:textColor="#FFF"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintVertical_bias="0.25"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <WebView
+            android:id="@+id/webView"
+            android:layout_width="1dp"
+            android:layout_height="1dp"/>
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <ProgressBar
+                    android:id="@+id/loadingView"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center"/>
+            <androidx.recyclerview.widget.RecyclerView 
+                    
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+        </FrameLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>
