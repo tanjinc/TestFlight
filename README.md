@@ -7,6 +7,10 @@
 
  ![](./images/device-2021-05-04-004903.png)
  ![](./images/device-2021-05-04-004903.png)
+ 
+### Jenkins配置过滤
+![](./images/jenkins_job_config.png)
+
 
 #### 账号
 Constant.kt  
