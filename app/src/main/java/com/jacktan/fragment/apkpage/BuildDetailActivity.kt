@@ -140,7 +140,7 @@ class BuildDetailActivity : AppCompatActivity(), IView {
                     }
             }
             viewholder.itemView.setOnClickListener {
-                if(buildBean.detailBean.result != "SUCCESS") { //FAILURE
+                if(buildBean.detailBean?.result != "SUCCESS") { //FAILURE
                     viewholder.buildErrorTv.visibility = View.VISIBLE
                 } else {
                     viewholder.buildErrorTv.visibility = View.GONE

@@ -12,10 +12,10 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.jacktan.testflight.R
 import com.google.android.material.tabs.TabLayout
-import com.jacktan.AboutDialog
 import com.jacktan.fragment.apkpage.AppFragment
 import com.jacktan.fragment.BaseFragment
 import com.jacktan.fragment.setting.SettingFragment
+import com.jacktan.utils.SharePrefUtil
 import java.util.*
 
 
@@ -36,16 +36,9 @@ class MainActivity : FragmentActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
-//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//                ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_PERMISSION_CODE)
-//            }
-//        }
-
         mTabLayout = findViewById(R.id.tabLayout)
         mTabLayout.visibility = View.VISIBLE
         mViewPager = findViewById(R.id.main_viewpager)
-
 
         val appFragment = AppFragment()
         mFragmentList.add(appFragment)
@@ -64,7 +57,17 @@ class MainActivity : FragmentActivity() {
         mTabLayout.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(mViewPager))
         mTabLayout.setupWithViewPager(mViewPager)
 
-        AboutDialog(this).show()
+        if (Constant.BASE_URL.isNullOrEmpty()) {
+            showConfig()
+        }
+    }
+
+    fun showConfig() {
+        val configDialog = ConfigDialog(this)
+        configDialog.setOnDismissListener {
+            ApiManager.init()
+        }
+        configDialog.show()
     }
     override fun onBackPressed() {
         if (mFragmentList[mViewPager.currentItem].onBackPress()) {
@@ -85,15 +88,6 @@ class MainActivity : FragmentActivity() {
         }
     }
 
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item?.itemId) {
-            R.id.action_about -> {
-                AboutDialog(this).show()
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
 
     inner class MyViewPageAdapter(fm: FragmentManager, private val mTitleArray: ArrayList<String>?, private val mFragmentArray: ArrayList<BaseFragment>?) : FragmentStatePagerAdapter(fm) {
 

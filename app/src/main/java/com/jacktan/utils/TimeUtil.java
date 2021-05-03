@@ -47,7 +47,7 @@ public class TimeUtil {
      * @return返回字符串格式 yyyy-MM-dd
      */
     public static String getStringDate(long time) {
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
         String dateString = formatter.format(time);
         return dateString;
     }

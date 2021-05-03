@@ -52,8 +52,8 @@ object SharePrefUtil {
         editor?.apply()
     }
 
-    fun getValue(context: Context?, key: String): String {
+    fun getValue(context: Context?, key: String, default: String): String {
         val sp = context?.getSharedPreferences(Constant.spName, Context.MODE_PRIVATE)
-        return sp?.getString(key, Constant.jenkins_host_url)!!
+        return sp?.getString(key, default)!!
     }
 }
