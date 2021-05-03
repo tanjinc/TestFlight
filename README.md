@@ -5,9 +5,14 @@
 1. apk下载安装
 2. job历史构建查看和安装
 
-#### 账号
-ApiManager.kt  
+ ![](./images/device-2021-05-04-004903.png)
+ ![](./images/device-2021-05-04-004903.png)
 
-        private val BASE_URL = "jenkins_url"
-        private val AUTHOR_TOKEN = "Basic cmVzdDpyZXN0MTIz"
+#### 账号
+Constant.kt  
+```kotlin
+    var BASE_URL = "http://build.jacktan.tech:5000"
+    var JENKINS_USER = "testflight"
+    var JENKINS_PASSWD = "123456"
+```
 
