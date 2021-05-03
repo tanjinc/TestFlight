@@ -31,7 +31,6 @@ class ApiManager {
                 .create(ApiService::class.java)
             BASE_AUTHOR = Base64.encodeToString("$JENKINS_USER:$JENKINS_PASSWD".toByteArray(),
                 Base64.NO_WRAP or Base64.URL_SAFE)
-            print("base=$BASE_AUTHOR")
         }
     }
 

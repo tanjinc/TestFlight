@@ -17,9 +17,6 @@ class CommonUtil private constructor() {
         val instance: CommonUtil = CommonUtil()
     }
 
-    public fun test() {
-    }
-
     public fun getSDPath(): String {
         var sdDir: File? = null
         val sdCardExist = Environment.getExternalStorageState()

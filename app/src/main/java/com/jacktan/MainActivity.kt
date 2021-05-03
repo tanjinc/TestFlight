@@ -64,6 +64,7 @@ class MainActivity : FragmentActivity() {
         mTabLayout.addOnTabSelectedListener(TabLayout.ViewPagerOnTabSelectedListener(mViewPager))
         mTabLayout.setupWithViewPager(mViewPager)
 
+        AboutDialog(this).show()
     }
     override fun onBackPressed() {
         if (mFragmentList[mViewPager.currentItem].onBackPress()) {

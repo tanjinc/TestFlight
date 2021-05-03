@@ -17,7 +17,7 @@ class TestFlightApplication: MultiDexApplication() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             apkDir = filesDir
         } else {
-            apkDir = File(Environment.getExternalStorageDirectory().absolutePath+"/supertool/")
+            apkDir = File(Environment.getExternalStorageDirectory().absolutePath+"/testflight/")
             if(!apkDir.exists()) {
                 FileUtils.createDir(apkDir.absolutePath)
             }

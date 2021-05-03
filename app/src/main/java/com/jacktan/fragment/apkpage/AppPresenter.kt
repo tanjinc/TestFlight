@@ -3,7 +3,6 @@ package com.jacktan.fragment.apkpage
 import android.annotation.SuppressLint
 import android.util.Log
 import com.jacktan.ApiManager
-import com.jacktan.BaseObserver
 import com.jacktan.fragment.apkpage.bean.AppBean
 import com.jacktan.fragment.apkpage.bean.BuildDetailBean
 import com.jacktan.fragment.apkpage.bean.JobBean
@@ -69,16 +68,21 @@ class AppPresenter(view: IView) {
         ApiManager.getApiService().getAllJobs()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : BaseObserver<JobBean>(){
+            .subscribe(object : Observer<JobBean> {
+                override fun onComplete() {
+                }
+
+                override fun onSubscribe(d: Disposable) {
+                }
+
                 override fun onNext(jobBean: JobBean) {
-                        jobBean?.jobs.forEach {
-                            getJobDetail(it.name)
+                    jobBean?.jobs.forEach {
+                        getJobDetail(it.name)
                     }
                 }
 
                 override fun onError(t: Throwable) {
                     t.message?.let { view?.fetchError(it, 0) }
-                    super.onError(t)
                 }
             })
     }

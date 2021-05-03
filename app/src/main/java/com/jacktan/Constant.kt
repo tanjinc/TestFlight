@@ -6,5 +6,5 @@ package com.jacktan
 object Constant {
     const val spName = "TestFlight"
     const val jenkins_host = "serverIp"
-    const val jenkins_host_url = "http://10.12.128.210:8000/"
+    const val jenkins_host_url = "http://build.jacktan.tech:5000/"
 }
