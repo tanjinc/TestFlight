@@ -5,8 +5,8 @@
 1. apk下载安装
 2. job历史构建查看和安装
 
- ![](./images/device-2021-05-04-004903.png)
- ![](./images/device-2021-05-04-004903.png)
+ ![](./images/device-2021-05-04-004903.png){:height="50%" width="50%"}
+ ![](./images/device-2021-05-04-004903.png){:height="50%" width="50%"}
 
 #### 账号
 Constant.kt  
